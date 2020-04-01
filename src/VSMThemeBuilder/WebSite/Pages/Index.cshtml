@@ -1,10 +1,40 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Theme Builder";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="container-fluid no-padding">
+        @Html.Raw(Model.CSharpSampleHtml)
+    </div>
+
+@section ThemeableScopes
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col" class="center">FG</th>
+                <th scope="col" class="center">BG</th>
+                <th scope="col" class="center"><b>B</b></th>
+                <th scope="col" class="center"><i>I</i></th>
+                <th scope="col" class="center"><u>U</u></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (string scope in @Model.Scopes)
+            {
+                <tr>
+                    <th scope="row">@scope</th>
+                    <td><input type="color" class="colorPickerFG center fle" id="@scope"/></td>
+                    <td><input type="color" class="colorPickerBG center" id="@scope"/></td>
+                    <td><input type="checkbox" class="center" id="@scope"/></td>
+                    <td><input type="checkbox" class="center" id="@scope"/></td>
+                    <td><input type="checkbox" class="center" id="@scope"/></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>       
+}

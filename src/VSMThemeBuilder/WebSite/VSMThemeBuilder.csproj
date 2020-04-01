@@ -3,5 +3,32 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
-
+    
+    <ItemGroup>
+      <Compile Remove="Levaro.CSharp.Display\**" />
+      <Compile Remove="Templates\CSharpSample.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Levaro.CSharp.Display\**" />     
+    </ItemGroup>
+    <ItemGroup>
+      <Content Remove="Levaro.CSharp.Display\**" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="Levaro.CSharp.Display\Levaro.CSharp.Display.csproj">
+        <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+      </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.3" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Templates\CSharpSample.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Utilities\" />
+      <Folder Include="Models\" />
+    </ItemGroup>
 </Project>
